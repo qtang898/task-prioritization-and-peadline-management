@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: task-prioritization-and-peadline-management
+
+server:
+  servlet:
+    context-path: /api
