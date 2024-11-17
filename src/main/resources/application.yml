@@ -1,7 +1,17 @@
 spring:
   application:
     name: task-prioritization-and-peadline-management
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cis111b
+    username: cis111b
+    password: Pa$$w0rd
 
 server:
   servlet:
     context-path: /api
+
+#database:
+#  url: jdbc:postgresql://localhost:5432/task-prioritization-and-peadline-management
+#  username: postgres
+#  password: postgres
