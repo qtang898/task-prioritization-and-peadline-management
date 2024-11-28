@@ -6,7 +6,9 @@ spring:
     url: jdbc:mysql://localhost:3306/cis111b
     username: cis111b
     password: Pa$$w0rd
-
+  jackson:
+    date-format: MM-dd-yyyy HH:mm:ss
+    time-zone: UTC
 server:
   servlet:
     context-path: /api

@@ -1,5 +1,6 @@
 package com.cis111b16.task_prioritization_and_peadline_management.service.impl;
 
+import com.cis111b16.task_prioritization_and_peadline_management.DTOs.UserRegisterDto;
 import com.cis111b16.task_prioritization_and_peadline_management.mapper.UserMapper;
 import com.cis111b16.task_prioritization_and_peadline_management.model.entity.User;
 import com.cis111b16.task_prioritization_and_peadline_management.service.UserService;
@@ -19,8 +20,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void register(String username, String password) {
-        String md5String= MD5Utils.encrypt(password);
-        userMapper.add(username,md5String);
+    public void register(UserRegisterDto registerDto) {
+        String md5String= MD5Utils.encrypt(registerDto.getPassword());
+        registerDto.setPassword(md5String);
+        userMapper.add(registerDto);
     }
 }

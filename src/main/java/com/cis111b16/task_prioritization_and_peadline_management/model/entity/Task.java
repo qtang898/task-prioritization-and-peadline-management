@@ -3,10 +3,11 @@ package com.cis111b16.task_prioritization_and_peadline_management.model.entity;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class Task {
-    private int id;
+    private Integer id;
     private String taskTitle;
     private int level;
     private String type;
@@ -14,4 +15,8 @@ public class Task {
     private LocalDateTime assigneDate;
     private LocalDateTime dueDate;
     private String status;
+
+    private List<General> generals;
+    private List<Homework> homeworks;
+    private List<BillPay> billPays;
 }

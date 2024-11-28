@@ -1,16 +1,16 @@
 package com.cis111b16.task_prioritization_and_peadline_management.controller;
 
+import com.cis111b16.task_prioritization_and_peadline_management.DTOs.UserRegisterDto;
 import com.cis111b16.task_prioritization_and_peadline_management.model.entity.Result;
 import com.cis111b16.task_prioritization_and_peadline_management.model.entity.User;
 import com.cis111b16.task_prioritization_and_peadline_management.service.UserService;
 import com.cis111b16.task_prioritization_and_peadline_management.utils.JwtUtils;
 import com.cis111b16.task_prioritization_and_peadline_management.utils.MD5Utils;
+import com.cis111b16.task_prioritization_and_peadline_management.utils.ThreadLocalUtils;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,17 +24,18 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public Result register(String username, String password){
-        if (username==null || username.length()<3 || username.length()>50)
+    public Result register(@RequestBody UserRegisterDto registerDto){
+        if (registerDto.getUsername()==null || registerDto.getUsername().length()<3 || registerDto.getUsername().length()>50)
             return Result.error("username only can be 3 to 50");
 
-        if (password==null || password.length()<6 || password.length() >50)
+        if (registerDto.getPassword()==null || registerDto.getPassword().length()<6 || registerDto.getPassword().length() >50)
             return Result.error("password only can be 6-50");
 
-        User u=userService.findByUserName(username);
+        User u=userService.findByUserName(registerDto.getUsername());
 
         if (u==null){
-            userService.register(username,password);
+//            userService.register(username,password);
+            userService.register(registerDto);
             return  Result.success();
         }else{
             return Result.error("username already take");
@@ -58,5 +59,22 @@ public class UserController {
         claims.put("username",user.getUserName());
         String token= JwtUtils.genToken(claims);
         return Result.success(token);
+    }
+//
+//    @GetMapping("/userinfo")
+//    public Result<User> userInfo(@RequestHeader(name="Authorization") String token){
+//        Map<String, Object> map = JwtUtils.parseToken(token);
+//        String username=(String) map.get("username");
+//
+//        User user = userService.findByUserName(username);
+//        return Result.success(user);
+//    }
+
+    @GetMapping("/userinfo")
+    public Result<User> userInfo(){
+        Map<String,Object> map= ThreadLocalUtils.get();
+        String username= (String) map.get("username");
+        User user = userService.findByUserName(username);
+        return Result.success(user);
     }
 }
