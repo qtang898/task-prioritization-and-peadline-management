@@ -5,6 +5,9 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * The type Bill pay.
+ */
 @Data
 public class BillPay {
     private int id;

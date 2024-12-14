@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * The type Bill pay controller.
+ */
 @RestController
 @RequestMapping("/billpay")
 @Validated
@@ -16,18 +19,29 @@ public class BillPayController {
     @Autowired
     private BillPayService billPayService;
 
+    /**
+     * Find by id result.
+     *
+     * @param taskid the taskid
+     * @return the result
+     */
     @GetMapping("/findbyid/{taskid}")
     public Result<BillPay> findByID(@PathVariable int taskid){
-        //if
         BillPay billPay=billPayService.findByID(taskid);
-        //if
-        return  Result.success(billPay);
+        if (billPay!=null)
+            return  Result.success(billPay);
+        return Result.error("can't find any data!");
     }
+
+    /**
+     * Edit result.
+     *
+     * @param billPay the bill pay
+     * @return the result
+     */
     @PostMapping("/edit")
     public Result<BillPay> edit(@RequestBody BillPay billPay){
-        //if
         BillPay b=billPayService.edit(billPay);
-        //if
         return  Result.success(b);
     }
 }

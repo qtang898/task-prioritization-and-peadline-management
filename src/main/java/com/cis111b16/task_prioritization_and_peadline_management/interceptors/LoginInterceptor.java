@@ -9,6 +9,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.Map;
 
+/**
+ * The type Login interceptor.
+ */
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 

@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * The type Homework controller.
+ */
 @RestController
 @RequestMapping("/homework")
 @Validated
@@ -15,12 +18,26 @@ public class HomeworkController {
     @Autowired
     private HomeworkService homeworkService;
 
+    /**
+     * Findbyid result.
+     *
+     * @param taskid the taskid
+     * @return the result
+     */
     @GetMapping("findbyid/{taskid}")
     public Result<Homework> findbyid(@PathVariable int taskid){
         Homework homework = homeworkService.findByID(taskid);
-        // some if here
-        return  Result.success(homework);
+        if (homework!=null)
+            return  Result.success(homework);
+        return Result.error("Data no found!");
     }
+
+    /**
+     * Edit result.
+     *
+     * @param homework the homework
+     * @return the result
+     */
     @PostMapping("/edit")
     public Result<Homework> edit(@RequestBody Homework homework){
         Homework h=homeworkService.edit(homework);

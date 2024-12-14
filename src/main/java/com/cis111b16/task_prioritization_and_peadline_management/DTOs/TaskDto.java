@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type Task dto.
+ */
 @Data
 public class TaskDto {
     private Integer id;

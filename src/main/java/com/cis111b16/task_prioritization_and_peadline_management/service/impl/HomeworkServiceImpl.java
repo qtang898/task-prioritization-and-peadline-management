@@ -6,6 +6,9 @@ import com.cis111b16.task_prioritization_and_peadline_management.service.Homewor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Homework service.
+ */
 @Service
 public class HomeworkServiceImpl implements HomeworkService {
 

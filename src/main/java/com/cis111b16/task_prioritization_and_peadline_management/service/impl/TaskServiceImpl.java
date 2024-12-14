@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * The type Task service.
+ */
 @Service
 public class TaskServiceImpl implements TaskService {
 

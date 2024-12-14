@@ -7,16 +7,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
+/**
+ * The type Hello controller.
+ */
 @RestController
 //@ConfigurationProperties(prefix = "database")
 public class HelloController {
 //    @Value("${database.url}")
     private  String dataBaseUrl;
+
+    /**
+     * Hello string.
+     *
+     * @return the string
+     */
     @RequestMapping("/hello")
     public String hello() {
         return "Hello World";
     }
 
+    /**
+     * Index string.
+     *
+     * @return the string
+     */
     @RequestMapping("/")
     public String index() {
         return "Hello World 20202020202"+dataBaseUrl;

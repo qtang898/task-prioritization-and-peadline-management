@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type Homework.
+ */
 @Data
 public class Homework {
     private int id;

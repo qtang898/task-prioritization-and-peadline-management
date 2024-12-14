@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type User controller.
+ */
 @RestController
 @RequestMapping("/user")
 @Validated
@@ -23,6 +26,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Register result.
+     *
+     * @param registerDto the register dto
+     * @return the result
+     */
     @PostMapping("/register")
     public Result register(@RequestBody UserRegisterDto registerDto){
         if (registerDto.getUsername()==null || registerDto.getUsername().length()<3 || registerDto.getUsername().length()>50)
@@ -43,6 +52,13 @@ public class UserController {
 
     }
 
+    /**
+     * Login result.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the result
+     */
     @PostMapping("/login")
     public Result<String> login(@Pattern(regexp = "\\S{3,50}$") String username ,@Pattern(regexp = "\\S{6,50}$") String password ){
        User user=userService.findByUserName(username);
@@ -70,6 +86,11 @@ public class UserController {
 //        return Result.success(user);
 //    }
 
+    /**
+     * User info result.
+     *
+     * @return the result
+     */
     @GetMapping("/userinfo")
     public Result<User> userInfo(){
         Map<String,Object> map= ThreadLocalUtils.get();

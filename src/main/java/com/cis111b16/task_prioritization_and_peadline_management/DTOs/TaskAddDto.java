@@ -6,6 +6,9 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * The type Task add dto.
+ */
 @Data
 public class TaskAddDto {
     private int id;
@@ -31,6 +34,7 @@ public class TaskAddDto {
     private BigDecimal amount;
     private String payee;
     private String billtype;
+    @JsonFormat(pattern = "MM-dd-yyyy HH:mm:ss", timezone = "UTC")
     private LocalDateTime paymentduedate;
 
 }

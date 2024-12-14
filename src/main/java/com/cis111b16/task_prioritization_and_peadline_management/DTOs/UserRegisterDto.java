@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type User register dto.
+ */
 @Data
 public class UserRegisterDto {
     private String username;

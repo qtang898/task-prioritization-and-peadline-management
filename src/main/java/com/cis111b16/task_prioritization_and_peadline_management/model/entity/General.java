@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type General.
+ */
 @Data
 public class General {
     private int id;

@@ -5,6 +5,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * The type Task.
+ */
 @Data
 public class Task {
     private Integer id;

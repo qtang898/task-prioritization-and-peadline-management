@@ -6,8 +6,17 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * The type Global exception handler.
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    /**
+     * Handle exception result.
+     *
+     * @param e the e
+     * @return the result
+     */
     @ExceptionHandler(Exception.class)
     public Result handleException(Exception e){
         e.printStackTrace();

@@ -3,12 +3,16 @@ package com.cis111b16.task_prioritization_and_peadline_management.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * The type Md 5 utils.
+ */
 public class MD5Utils {
-    /** add by ChatGpt :)
-     * 对给定的字符串进行 MD5 加密
+    /**
+     * add by ChatGpt :)
+     * MD5 encryption is performed on the given string
      *
-     * @param input 要加密的字符串
-     * @return 加密后的 32 位十六进制字符串
+     * @param input for str to md5
+     * @return An encrypted 32-bit hexadecimal character string
      */
     public static String encrypt(String input) {
         if (input == null || input.isEmpty()) {
@@ -30,10 +34,10 @@ public class MD5Utils {
     }
 
     /**
-     * 将字节数组转换为十六进制字符串
-     *
-     * @param bytes 字节数组
-     * @return 十六进制字符串
+     * Converts a byte array to a hexadecimal string
+     * ChatGpt add
+     * @param bytes  Byte array
+     * @return It is a hexadecimal character string
      */
     private static String bytesToHex(byte[] bytes) {
         StringBuilder hexString = new StringBuilder();

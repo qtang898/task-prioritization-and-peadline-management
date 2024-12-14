@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * The type General controller.
+ */
 @RestController
 @RequestMapping("/general")
 @Validated
@@ -15,18 +18,29 @@ public class GeneralController {
     @Autowired
     private GeneralService  generalService;
 
-    @GetMapping("/findbyid/{id}")
+    /**
+     * Find by id result.
+     *
+     * @param taskid the taskid
+     * @return the result
+     */
+    @GetMapping("/findbyid/{taskid}")
     public Result<General> findByID(@PathVariable int taskid){
         General g= generalService.findByID(taskid);
-        //if
-        return  Result.success(g);
+        if (g!=null)
+            return  Result.success(g);
+        return Result.error("no data");
     }
 
+    /**
+     * Edit result.
+     *
+     * @param general the general
+     * @return the result
+     */
     @PostMapping("edit")
     public Result<General> edit(@RequestBody General general){
-        //if
         General g=generalService.edit(general);
-        //if
         return Result.success(g);
     }
 }

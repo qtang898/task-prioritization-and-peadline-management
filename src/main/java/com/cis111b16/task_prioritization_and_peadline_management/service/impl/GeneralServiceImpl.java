@@ -6,6 +6,9 @@ import com.cis111b16.task_prioritization_and_peadline_management.service.General
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type General service.
+ */
 @Service
 public class GeneralServiceImpl implements GeneralService {
     @Autowired
